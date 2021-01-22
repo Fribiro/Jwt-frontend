@@ -10,10 +10,32 @@ import Content from './components/Content';
 export const UserContext = React.createContext([]);
 
 function App() {
+
+  const [ user, setUser ] = useState([]);
+  const [ loading, setLoading ] = useState(true);
+
+  const logoutCallback = async () => {
+
+  }
+
+  useEffect(() => {
+
+  }, []);
+
   return (
-    <div className="App">
-      App
-    </div>
+    <UserContext.Provider value = {[user, setUser]}>    
+      <div className="App">
+        <Navigation logoutCallback={logoutCallback}/>
+        <Router id="router">
+          <Login path="Login" />
+          <Register path="Register" />
+          <Protected path="Protected" />
+          <Content path="/" />
+
+
+        </Router>
+      </div>
+    </UserContext.Provider>
   );
 }
 
