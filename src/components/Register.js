@@ -10,7 +10,7 @@ const Register = () => {
         const result = await (await fetch('http://localhost:4040/register', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/jon',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 email,

@@ -13,7 +13,7 @@ const Login = () => {
             method: 'POST',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/jon',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 email,
