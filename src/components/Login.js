@@ -8,10 +8,39 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async e => {
+        e.preventDefault();
+        const result = await (await fetch('http://localhost:4040/login', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/jon',
+            },
+            body: JSON.stringify({
+                email,
+                password
+            }),
+        })).json();
 
-    }
+        if(result.accesstoken) {
+            setUser({
+                accesstoken: result.accesstoken,
+            });
+            navigate('/');
+        } else {
+            console.log(result.error);
+        }
+    };
+
+    useEffect(() => {
+        console.log(user);
+    }, [user])
 
     const handleChange = e => {
+        if (e.currentTarget.name === 'email') {
+            setEmail(e.currentTarget.value);
+        } else {
+            setPassword(e.currentTarget.value);
+        }
 
     }
 
